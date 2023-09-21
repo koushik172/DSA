@@ -21,3 +21,14 @@ childElement = document.getElementsByTagName("li")
 childElement[4].classList.add("list-group-item");
 childElement[4].style.backgroundColor = '#111';
 childElement[4].style.color = 'white';
+
+list = document.querySelectorAll('.list-group-item');
+list[1].style.backgroundColor = 'green';
+list[1].style.color = 'green';
+list[2].style.opacity = '0';
+
+let odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+for (let i=0; i<odd.length; i++) {
+    odd[i].style.backgroundColor = 'green';
+}
+console.log(odd);
