@@ -1,34 +1,52 @@
-let items = document.getElementsByClassName('list-group-item');
+// parentElement
+var childElement = document.getElementById('items');
+var parentElement = childElement.parentElement;
+console.log(parentElement);
 
-for (var i = 0; i < items.length; i++) {
-    items[i].style.backgroundColor = '#e8f8f8';
-}
+// lastchild
+lastChild = parentElement.lastChild;
+console.log(lastChild);
 
-items[2].style.backgroundColor = "green";
+// lastelementchild
+var lastChild = parentElement.lastElementChild;
+lastChild.style.color = "green";
+console.log(lastChild);
 
-let list = document.getElementById('items');
+// createElement
+var newElement = document.createElement('li');
 
-var childElement = document.createElement("li");
-childElement.className = "childClass";
+// firstchild
+firstChild = parentElement.firstChild;
+console.log(firstChild);
 
-list.appendChild(childElement);
+// firstElementChild
+var firstChild = parentElement.firstElementChild;
+firstChild.style.color = 'gray';
+console.log(firstChild);
 
-childElement = document.getElementsByClassName('childClass');
-childElement[0].textContent = "Item 5";
+// nextSibling
+var nextSibling = childElement.nextSibling;
+console.log(nextSibling);
 
-childElement = document.getElementsByTagName("li")
+// nextElementSibling
+var nextElementSibling = firstChild.nextElementSibling;
+console.log(nextElementSibling);
 
-childElement[4].classList.add("list-group-item");
-childElement[4].style.backgroundColor = '#111';
-childElement[4].style.color = 'white';
+// previousSibling
+var previousSibling = childElement.previousSibling;
+console.log(previousSibling);
 
-list = document.querySelectorAll('.list-group-item');
-list[1].style.backgroundColor = 'green';
-list[1].style.color = 'green';
-list[2].style.opacity = '0';
+// previousElementSibling
+var previousElementSibling = childElement.previousElementSibling;
+console.log(previousElementSibling);
 
-let odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
-for (let i=0; i<odd.length; i++) {
-    odd[i].style.backgroundColor = 'green';
-}
-console.log(odd);
+// setAttribute
+newElement.setAttribute('class', 'list-group-item');
+
+// createTextNode
+var textNode = document.createTextNode('Item 5');
+
+// appendChild
+newElement.appendChild(textNode);
+lastChild.appendChild(newElement);
+console.log(lastChild);
