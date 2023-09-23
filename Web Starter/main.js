@@ -14,14 +14,14 @@ function addItem(e) {
   e.preventDefault();
 
   // Get input value
-  var newItem = document.getElementById("item").value;
-
+  var newItem1 = document.getElementById("item1").value;
+  var newItem2 = document.getElementById("item2").value;
   // Create new li element
   var li = document.createElement("li");
   // Add class
   li.className = "list-group-item";
   // Add text node with input value
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(newItem1 + " " + newItem2));
 
   // Create del button element
   var deleteBtn = document.createElement("button");
