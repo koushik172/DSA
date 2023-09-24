@@ -22,6 +22,7 @@ function addItem(e) {
   li.className = "list-group-item";
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem1 + " " + newItem2));
+  localStorage.setItem(newItem1, newItem2)
 
   // Create del button element
   var deleteBtn = document.createElement("button");
