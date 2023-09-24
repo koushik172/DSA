@@ -22,7 +22,9 @@ function addItem(e) {
   li.className = "list-group-item";
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem1 + " " + newItem2));
-  localStorage.setItem(newItem1, newItem2)
+  let obj = { Item1 : newItem1, Item2 : newItem2 };
+  localStorage.setItem(newItem1, JSON.stringify(obj));
+  // let data = JSON.parse(localStorage.getItem(newItem1));
 
   // Create del button element
   var deleteBtn = document.createElement("button");
@@ -30,7 +32,7 @@ function addItem(e) {
 
   // Add classes to del button
   deleteBtn.className = "btn btn-danger btn-sm float-right delete";
-  editBtn.className = "btn btn-primary btn-sm float-right edit"
+  editBtn.className = "btn btn-primary btn-sm float-right edit";
 
   // Append text node
   deleteBtn.appendChild(document.createTextNode("🗑️"));
