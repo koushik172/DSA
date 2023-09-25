@@ -8,6 +8,8 @@ form.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
 // Filter event
 filter.addEventListener("keyup", filterItems);
+// Edit event
+itemList.addEventListener("click", editItem);
 
 // Add item
 function addItem(e) {
@@ -24,7 +26,7 @@ function addItem(e) {
   li.name = name;
   // Add text node with input value
   li.appendChild(document.createTextNode(name + " - " + email + " - " + phone));
-  let obj = { 'name' : name, 'email' : email, 'phone': phone};
+  let obj = { name: name, email: email, phone: phone };
   localStorage.setItem(name, JSON.stringify(obj));
   // let data = JSON.parse(localStorage.getItem(newItem1));
 
@@ -46,6 +48,10 @@ function addItem(e) {
 
   // Append li to list
   itemList.appendChild(li);
+
+  document.getElementById("name").value = '';
+  document.getElementById("email").value = '';
+  document.getElementById("phone").value = '';
 }
 
 // Remove item
@@ -54,7 +60,7 @@ function removeItem(e) {
     if (confirm("Are You Sure?")) {
       var li = e.target.parentElement;
       itemList.removeChild(li);
-      localStorage.removeItem(li.name)
+      localStorage.removeItem(li.name);
     }
   }
 }
@@ -74,4 +80,19 @@ function filterItems(e) {
       item.style.display = "none";
     }
   });
+}
+
+// Edit Items
+function editItem(e) {
+  if (e.target.classList.contains("edit")) {
+    if (confirm("Are You Sure?")) {
+      var li = e.target.parentElement;
+      let data = JSON.parse(localStorage.getItem(li.name));
+      localStorage.removeItem(data.name);
+      document.getElementById("name").value = data.name;
+      document.getElementById("email").value = data.email;
+      document.getElementById("phone").value = data.phone;
+      itemList.removeChild(li);
+    }
+  }
 }
