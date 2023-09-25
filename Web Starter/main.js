@@ -21,10 +21,10 @@ function addItem(e) {
   var li = document.createElement("li");
   // Add class
   li.className = "list-group-item";
+  li.name = name;
   // Add text node with input value
   li.appendChild(document.createTextNode(name + " - " + email + " - " + phone));
   let obj = { 'name' : name, 'email' : email, 'phone': phone};
-  console.log(obj);
   localStorage.setItem(name, JSON.stringify(obj));
   // let data = JSON.parse(localStorage.getItem(newItem1));
 
@@ -54,6 +54,7 @@ function removeItem(e) {
     if (confirm("Are You Sure?")) {
       var li = e.target.parentElement;
       itemList.removeChild(li);
+      localStorage.removeItem(li.name)
     }
   }
 }
